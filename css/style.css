@@ -1,0 +1,651 @@
+/* ─── Car O'phile | Black/Neon Theme ─────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Share+Tech+Mono&display=swap');
+
+/* ─── CSS Variables ──────────────────────────────────────────────────────── */
+:root {
+  --bg-primary:    #000000;
+  --bg-secondary:  #080808;
+  --bg-card:       #0a0a0a;
+  --neon-cyan:     #00f5ff;
+  --neon-green:    #39ff14;
+  --neon-pink:     #ff0080;
+  --neon-yellow:   #ffe600;
+  --neon-orange:   #ff6600;
+  --text-primary:  #e8e8e8;
+  --text-dim:      #888;
+  --border-glow:   rgba(0, 245, 255, 0.35);
+  --glow-spread:   0 0 8px var(--neon-cyan), 0 0 20px rgba(0,245,255,0.4);
+  --glow-green:    0 0 8px var(--neon-green), 0 0 20px rgba(57,255,20,0.4);
+  --glow-pink:     0 0 8px var(--neon-pink), 0 0 20px rgba(255,0,128,0.4);
+}
+
+/* ─── Reset & Base ───────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(ellipse at 15% 0%, rgba(0,245,255,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 100%, rgba(255,0,128,0.07) 0%, transparent 60%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(0,245,255,0.025) 39px,
+      rgba(0,245,255,0.025) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 79px,
+      rgba(0,245,255,0.015) 79px,
+      rgba(0,245,255,0.015) 80px
+    );
+  color: var(--text-primary);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none; /* custom cursor */
+}
+
+/* ─── Custom Cursor ──────────────────────────────────────────────────────── */
+#cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  background: var(--neon-cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: var(--glow-spread);
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(0,245,255,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.18s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s;
+}
+
+body:has(a:hover) #cursor-ring,
+body:has(button:hover) #cursor-ring {
+  width: 52px; height: 52px;
+  border-color: var(--neon-pink);
+}
+
+/* ─── Scanline overlay ───────────────────────────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,0.08) 0px,
+    rgba(0,0,0,0.08) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 9000;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 110px;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(0,245,255,0.2);
+  box-shadow: 0 2px 30px rgba(0,245,255,0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo img {
+  height: 108px;
+  filter: drop-shadow(0 0 6px var(--neon-cyan));
+  transition: filter 0.3s;
+}
+
+.logo img:hover {
+  filter: drop-shadow(0 0 14px var(--neon-cyan));
+}
+
+/* Site name fallback rendered via JS */
+.logo a {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--neon-cyan);
+  text-decoration: none;
+  letter-spacing: 3px;
+  text-shadow: var(--glow-spread);
+}
+
+/* ─── Navigation ─────────────────────────────────────────────────────────── */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+nav ul li a {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-decoration: none;
+  letter-spacing: 2px;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition: color 0.25s, border-color 0.25s, text-shadow 0.25s, background 0.25s;
+  text-transform: uppercase;
+  cursor: none;
+}
+
+nav ul li a:hover {
+  color: var(--neon-cyan);
+  border-color: rgba(0,245,255,0.4);
+  text-shadow: var(--glow-spread);
+  background: rgba(0,245,255,0.05);
+}
+
+/* ─── Main ───────────────────────────────────────────────────────────────── */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 32px 80px;
+}
+
+/* Hero heading */
+main > p:first-of-type h1,
+main > h1 {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+  font-weight: 900;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-spread);
+  letter-spacing: 2px;
+  line-height: 1.25;
+  margin: 36px 0 28px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ─── Search bar ─────────────────────────────────────────────────────────── */
+input[type="placeholder"],
+input[type="text"],
+input[type="search"] {
+  display: block;
+  width: min(520px, 100%);
+  margin: 0 auto 56px;
+  padding: 14px 22px;
+  background: rgba(0,245,255,0.04);
+  border: 1px solid rgba(0,245,255,0.3);
+  border-radius: 2px;
+  color: var(--neon-cyan);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  cursor: none;
+}
+
+input[type="placeholder"]::placeholder {
+  color: rgba(0,245,255,0.35);
+  letter-spacing: 2px;
+}
+
+input[type="placeholder"]:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: var(--glow-spread), inset 0 0 20px rgba(0,245,255,0.05);
+}
+
+/* ─── Car Entries ────────────────────────────────────────────────────────── */
+main > h2 {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1rem, 2.2vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* Alternate neon colors per nth-car using sibling trick via JS class */
+main > h2:nth-of-type(1)  { color: var(--neon-cyan);   text-shadow: var(--glow-spread); }
+main > h2:nth-of-type(2)  { color: var(--neon-green);  text-shadow: var(--glow-green); }
+main > h2:nth-of-type(3)  { color: var(--neon-pink);   text-shadow: var(--glow-pink); }
+main > h2:nth-of-type(4)  { color: var(--neon-yellow); text-shadow: 0 0 8px var(--neon-yellow), 0 0 20px rgba(255,230,0,0.4); }
+main > h2:nth-of-type(5)  { color: var(--neon-orange); text-shadow: 0 0 8px var(--neon-orange), 0 0 20px rgba(255,102,0,0.4); }
+main > h2:nth-of-type(6)  { color: var(--neon-cyan);   text-shadow: var(--glow-spread); }
+main > h2:nth-of-type(7)  { color: var(--neon-green);  text-shadow: var(--glow-green); }
+main > h2:nth-of-type(8)  { color: var(--neon-pink);   text-shadow: var(--glow-pink); }
+main > h2:nth-of-type(9)  { color: var(--neon-yellow); text-shadow: 0 0 8px var(--neon-yellow), 0 0 20px rgba(255,230,0,0.4); }
+main > h2:nth-of-type(10) { color: var(--neon-orange); text-shadow: 0 0 8px var(--neon-orange), 0 0 20px rgba(255,102,0,0.4); }
+
+main > h2 b { font-weight: 900; }
+main > h2 u { text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+
+/* Car images */
+main > img {
+  display: block;
+  width: 100%;
+  max-width: 680px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin: 0 auto 20px;
+  border: 1px solid rgba(0,245,255,0.15);
+  box-shadow: 0 0 30px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,245,255,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s;
+  cursor: none;
+}
+
+main > img:hover {
+  transform: scale(1.012);
+  box-shadow: 0 0 50px rgba(0,245,255,0.2), 0 0 0 1px rgba(0,245,255,0.3);
+  border-color: rgba(0,245,255,0.4);
+}
+
+/* Logo image at top */
+main > img:first-of-type {
+  max-width: 640px;
+  height: auto;
+  margin-bottom: 0;
+  filter: drop-shadow(0 0 12px var(--neon-cyan));
+  border: none;
+  box-shadow: none;
+}
+
+main > img:first-of-type:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+main > img:first-of-type{
+    animation: heroLogoIntro 1.4s ease-out forwards;
+}
+
+@keyframes heroLogoIntro{
+    0%{
+        opacity:0;
+        transform:translateY(35px) scale(0.92);
+        filter:drop-shadow(0 0 0px var(--neon-cyan));
+    }
+
+    60%{
+        opacity:1;
+        transform:translateY(-6px) scale(1.03);
+        filter:drop-shadow(0 0 26px var(--neon-cyan));
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+        filter:drop-shadow(0 0 12px var(--neon-cyan));
+    }
+}
+
+/* Hero divider */
+.hero-line{
+    width:85%;
+    height:2px;
+    background:linear-gradient(
+        to right,
+        transparent,
+        var(--neon-cyan),
+        transparent
+    );
+    box-shadow:0 0 15px var(--neon-cyan);
+}
+
+.hero-line:first-of-type{
+    margin:10px auto 12px;   /* top 10px, bottom 12px */
+}
+
+.hero-line:last-of-type{
+    margin:12px auto 18px;   /* top 12px, bottom 18px */
+}
+
+.hero-line{
+    opacity:0;
+    animation:heroLineIntro 1s ease forwards;
+}
+
+.hero-line:first-of-type{
+    animation-delay:.35s;
+}
+
+.hero-line:last-of-type{
+    animation-delay:.55s;
+}
+
+@keyframes heroLineIntro{
+    from{
+        opacity:0;
+        transform:scaleX(.6);
+    }
+
+    to{
+        opacity:1;
+        transform:scaleX(1);
+    }
+}
+
+/* Bullet lists */
+main > ul {
+  list-style: none;
+  margin: 14px 0 12px 0;
+}
+
+main > ul li {
+  position: relative;
+  padding-left: 24px;
+  color: #bbb;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+main > ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--neon-cyan);
+  font-size: 0.9rem;
+}
+
+/* Stat lines */
+main > p > i {
+  display: block;
+  font-style: normal;
+  color: #aaa;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  padding: 5px 0 5px 18px;
+  border-left: 2px solid rgba(0,245,255,0.25);
+  margin: 6px 0;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+main > p > i:hover {
+  border-left-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+}
+
+/* hr dividers */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,245,255,0.35), transparent);
+  margin: 36px 0;
+}
+
+/* ─── Comparable Table ───────────────────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 48px 0 32px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(0,245,255,0.2);
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+table h2 {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-spread);
+  padding: 24px 20px 16px;
+  text-align: center;
+}
+
+thead tr {
+  background: rgba(0,245,255,0.06);
+  border-bottom: 2px solid rgba(0,245,255,0.3);
+}
+
+thead th {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-spread);
+  text-transform: uppercase;
+  padding: 14px 18px;
+  text-align: left;
+}
+
+tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.25s;
+}
+
+tbody tr:hover {
+  background: rgba(0,245,255,0.04);
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.015);
+}
+
+tbody tr:nth-child(even):hover {
+  background: rgba(0,245,255,0.05);
+}
+
+tbody td {
+  padding: 13px 18px;
+  color: #bbb;
+  vertical-align: middle;
+  border-right: 1px solid rgba(255,255,255,0.04);
+}
+
+tbody td:last-child {
+  border-right: none;
+}
+
+tbody td b {
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Speed values in bold get neon tint */
+tbody td b:only-child {
+  color: var(--neon-cyan);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid rgba(0,245,255,0.15);
+  padding: 52px 48px 40px;
+  text-align: center;
+}
+
+footer > p:first-child {
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-spread);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+footer > h4 {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+footer a {
+  display: inline-block;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  margin: 5px 10px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 2px;
+  transition: color 0.25s, border-color 0.25s, text-shadow 0.25s, background 0.25s;
+  cursor: none;
+}
+
+footer a:hover {
+  color: var(--neon-pink);
+  border-color: rgba(255,0,128,0.4);
+  text-shadow: var(--glow-pink);
+  background: rgba(255,0,128,0.05);
+}
+
+footer > p:last-of-type {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.5px;
+  margin-top: 28px;
+}
+
+footer > p:nth-last-of-type(2) {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  color: rgba(0,245,255,0.35);
+  letter-spacing: 2px;
+  margin-top: 28px;
+}
+
+/* ─── Scroll-reveal animation ────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Speed bar (injected via JS) ────────────────────────────────────────── */
+.speed-bar-wrap {
+  margin: 10px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.speed-bar-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  min-width: 90px;
+}
+
+.speed-bar-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.speed-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  width: 0%;
+  transition: width 1.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.speed-bar-value {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--neon-cyan);
+  min-width: 70px;
+  text-align: right;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  header {
+    padding: 0 20px;
+    flex-direction: column;
+    height: auto;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    gap: 12px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  nav ul li a {
+    font-size: 0.62rem;
+    padding: 6px 10px;
+  }
+
+  main {
+    padding: 40px 18px 60px;
+  }
+
+  table {
+    font-size: 0.72rem;
+    display: block;
+    overflow-x: auto;
+  }
+
+  footer {
+    padding: 40px 20px 30px;
+  }
+}
+
+/* ─── Glitch animation on logo ───────────────────────────────────────────── */
