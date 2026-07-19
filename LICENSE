@@ -1,21 +1,66 @@
-MIT License
+Custom Source-Available License v1.0
 
-Copyright (c) 2026 Yash Singh
+Copyright (c) 2025 Your Name
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+By accessing, viewing, downloading, or contributing to this software, you agree to the following terms.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. PERMITTED USE
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+You may:
+
+• View and study the source code.
+• Fork this repository on GitHub for personal or educational purposes.
+• Modify the source code for personal use.
+• Submit pull requests or patches to the original repository.
+• Use this software privately.
+
+2. CONTRIBUTIONS
+
+Any contributor retains ownership of their own contributions but grants the repository owner a perpetual, worldwide, royalty-free, irrevocable license to use, modify, merge, publish, and distribute those contributions as part of this project.
+
+All submitted contributions become subject to this license.
+
+3. RESTRICTIONS
+
+Without prior written permission from the copyright holder, you may NOT:
+
+• Redistribute this software.
+• Publish modified versions outside the official repository.
+• Sell, sublicense, lease, or commercially exploit this software.
+• Include this software in commercial products.
+• Mirror this repository.
+• Repackage or distribute compiled versions.
+
+4. MODIFICATIONS
+
+You may modify the software privately.
+
+Modified versions may only be shared by submitting a Pull Request to the official repository unless written permission is granted by the copyright holder.
+
+5. COPYRIGHT NOTICE
+
+This copyright notice and license must remain intact in all copies, forks, and modifications.
+
+Credit to the original author must always be preserved.
+
+6. TRADEMARK
+
+The project name, branding, and logos may not be used to imply endorsement without written permission.
+
+7. DISCLAIMER
+
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THIS SOFTWARE.
+
+8. TERMINATION
+
+Any violation of this license immediately terminates all rights granted under it.
+
+Upon termination, all unauthorized copies and derivative works must cease distribution.
+
+9. CONTACT
+
+For commercial licensing, redistribution rights, or other permissions, contact:
+
+yashrajsinghchauhan2610@gmail.com
