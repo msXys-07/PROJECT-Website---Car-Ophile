@@ -309,11 +309,23 @@ If you would like to improve the project:
 
 ---
 
-# 📜 License
+# License
 
-This project is intended for **educational and learning purposes**.
+This project is **source-available**, not open source.
 
-All vehicle names, logos, trademarks, and brand assets belong to their respective manufacturers.
+You are welcome to:
+- View the source code
+- Fork the repository
+- Modify it for personal use
+- Submit pull requests
+
+You may **not**:
+- Redistribute this project
+- Sell it
+- Use it commercially
+- Publish modified versions outside the official repository
+
+See the `LICENSE` file for the complete terms.
 
 ---
 
